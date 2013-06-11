@@ -1,0 +1,21 @@
+#
+# THERMAL DAEMON
+#
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT_SBIN)
+LOCAL_MODULE_TAGS := optional
+
+
+LOCAL_SRC_FILES +=  thermald.c
+
+LOCAL_C_INCLUDES += $(LOCAL_PATH)
+
+LOCAL_STATIC_LIBRARIES := libc
+LOCAL_SHARED_LIBRARIES := libcutils
+
+LOCAL_MODULE := thermald
+include $(BUILD_EXECUTABLE)
+
