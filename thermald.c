@@ -31,6 +31,8 @@ static struct thermal_zone thermal_zones[] = {
     {"skin1", -1, 74000},
     {"SYSTHERM0", -1, 64000},
     {"SYSTHERM1", -1, 74000},
+    {"max17047_battery", -1, 64000},
+    {"byt_battery", -1, 64000},
 };
 
 int read_sysfs_type(const char *path, char *buf, size_t sz)
@@ -130,6 +132,7 @@ static void temperature_check()
 
 static void thermal_loop()
 {
+    LOGI("Thermal daemon started.");
     while(1) {
         temperature_check();
         sleep(5);
