@@ -27,12 +27,13 @@
 
 /* Temperatures are in milli degree celcius */
 static struct thermal_zone thermal_zones[] = {
-    {"skin0", -1, 64000},
-    {"skin1", -1, 74000},
+    {"skin0", -1, 65000},
+    {"skin1", -1, 70000},
     {"SYSTHERM0", -1, 64000},
     {"SYSTHERM1", -1, 74000},
     {"max17047_battery", -1, 64000},
     {"byt_battery", -1, 64000},
+    {"skin0_1", -1, 65000},
 };
 
 int read_sysfs_type(const char *path, char *buf, size_t sz)
