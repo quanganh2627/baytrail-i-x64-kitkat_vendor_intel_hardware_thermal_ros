@@ -31,7 +31,7 @@ static struct thermal_zone thermal_zones[] = {
     {"skin1", -1, 70000},
     {"SYSTHERM0", -1, 64000},
     {"SYSTHERM1", -1, 74000},
-    {"max17047_battery", -1, 64000},
+    {"max17047_battery", -1, 60000},
     {"byt_battery", -1, 64000},
     {"skin0_1", -1, 65000},
 };
