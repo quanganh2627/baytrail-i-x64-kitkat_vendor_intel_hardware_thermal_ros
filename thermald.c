@@ -133,7 +133,6 @@ static void temperature_check()
 
 static void thermal_loop()
 {
-    LOGI("Thermal daemon started.");
     while(1) {
         temperature_check();
         sleep(5);
@@ -151,6 +150,11 @@ static void thermal_init()
 int main(int argc, char **argv)
 {
     thermal_init();
+    if (argc == 2) {
+        LOGI("Thermal daemon started in %s.", argv[1]);
+    } else {
+        LOGI("Thermal daemon started.");
+    }
     thermal_loop();
     return 0;
 }

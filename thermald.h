@@ -30,7 +30,7 @@ struct thermal_zone {
 #define TEMP_PATH "/sys/class/thermal/thermal_zone%d/temp"
 
 /* Logs macros */
-#define LOG_TAG "thermal_rosd"
+#define LOG_TAG "thermald"
 #ifdef __ANDROID__
 #include <android/log.h>
 #define LOG_INIT(a) do {  } while(0)
