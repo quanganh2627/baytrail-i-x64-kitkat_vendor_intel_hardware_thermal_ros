@@ -27,13 +27,10 @@
 
 /* Temperatures are in milli degree celcius */
 static struct thermal_zone thermal_zones[] = {
-    {"skin0", -1, 65000},
-    {"skin1", -1, 70000},
     {"SYSTHERM0", -1, 64000},
     {"SYSTHERM1", -1, 74000},
     {"max17047_battery", -1, 60000},
     {"byt_battery", -1, 64000},
-    {"skin0_1", -1, 65000},
 };
 
 int read_sysfs_type(const char *path, char *buf, size_t sz)
@@ -100,18 +97,20 @@ int get_zone_index(char * zone_name)
 {
     char buffer[THERMAL_NAME_LENGTH];
     char path[THERMAL_SYSFS_LENGTH];
-    int zone_index = -1, i;
+    int zone_index = 0;
 
-    for (i = 0; i < sizeof(thermal_zones)/sizeof(struct thermal_zone); i++) {
-        snprintf(path, sizeof(path), TYPE_PATH, i);
-        read_sysfs_type(path, buffer, THERMAL_NAME_LENGTH);
-        if (!strncmp(buffer, zone_name, sizeof(buffer))) {
-            zone_index = i;
+    do {
+        snprintf(path, sizeof(path), TYPE_PATH, zone_index);
+        if (read_sysfs_type(path, buffer, THERMAL_NAME_LENGTH) < 0) {
             break;
+        } else {
+            if (!strncmp(buffer, zone_name, sizeof(buffer)))
+                return zone_index;
+            zone_index++;
         }
-    }
+    } while(1);
 
-    return zone_index;
+    return -1;
 }
 
 static void temperature_check()
