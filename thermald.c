@@ -32,6 +32,8 @@ static struct thermal_zone thermal_zones[] = {
     {"SYSTHERM1", -1, 64000},
     {"max17047_battery", -1, 60000},
     {"byt_battery", -1, 64000},
+    {"intel_fuel_gauge", -1, 64000},
+    {"dollar_cove_battery", -1, 64000},
 };
 
 int read_sysfs_type(const char *path, char *buf, size_t sz)
