@@ -28,6 +28,8 @@
 /* Temperatures are in milli degree celcius */
 static struct thermal_zone thermal_zones[] = {
     /* Keeping same shutdown temp for all SYSTHERMs */
+    {"skin0", -1, 64000},
+    {"skin1", -1, 64000},
     {"SYSTHERM0", -1, 64000},
     {"SYSTHERM1", -1, 64000},
     {"max17047_battery", -1, 60000},
